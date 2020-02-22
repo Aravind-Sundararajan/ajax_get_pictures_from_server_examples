@@ -4,11 +4,11 @@
 <head>
 
 
-<link rel="stylesheet" type="text/css" href="media/catstyle.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
+<link rel="stylesheet" type="text/css" href="./media/catstyle.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
 
 <?php
 //define('WEBSITE','https://aravindsundararajan.tech/media/images/')
-//echo "trying to list the files in ~/media/images/:";
+//echo "trying to list the files in ~catpics/media/images/:";
 
 //$phpFileList = glob('media/images/*');
 //$numFiles = (string)count(glob('media/images/*'));
@@ -22,7 +22,7 @@
 //echo $myJSON;
 ?>
 
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
 
 <script type="text/javascript">
   
@@ -38,7 +38,7 @@ $(document).ready(function(){
  	$("#msg2").html(function(){	
  		$.ajax({
 			type: "GET",
-			url: "catpics.php",
+			url: "./catpics.php",
 			dataType: "json",
 			success:function(result){
 			var output = "";
