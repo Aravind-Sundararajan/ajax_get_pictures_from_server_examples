@@ -32,38 +32,37 @@ $(document).ready(function(){
   
 </script>
 
-<script type="text/javascript">		
-  
- $(document).ready(function(){
- 	console.log("jQuery loaded, making AJAX request...");
- 	$("#msg2").html("Loading images...");	
- 		$.ajax({
-			type: "GET",
-			url: "./debug.php",
-			dataType: "json",
-			success: function(result) {
-				console.log("AJAX Success:", result);
-				$("#msg").html("Found " + result.valid_files + " images");
-				
-				if (result.files && result.files.length > 0) {
-					result.files.forEach(function(file) {
-						$("#msg2").append('<img class="resize" src="' + file + '" alt="Cat">');
-					});
-				} else {
-					$("#msg2").html("No images found");
-				}
-			},
-			error: function(xhr, status, error) {
-				console.error("AJAX Error:", error);
-				console.log("Status:", status);
-				console.log("Response:", xhr.responseText);
-				$("#msg2").html("AJAX Error: " + error + "<br>Status: " + status + "<br>Response: " + xhr.responseText);
-			}
-		});
-
-	});
-});
-</script>
+<script>
+        $(document).ready(function() {
+            console.log("jQuery loaded");
+            $("#debug-info").html("jQuery loaded successfully");
+            
+            // Test the AJAX call
+            $.ajax({
+                type: "GET",
+                url: "./debug.php",
+                dataType: "json",
+                success: function(result) {
+                    console.log("AJAX Success:", result);
+                    $("#debug-info").html("AJAX Success! Found " + result.valid_files + " images");
+                    
+                    if (result.files && result.files.length > 0) {
+                        result.files.forEach(function(file) {
+                            $("#images-container").append('<img class="resize" src="' + file + '" alt="Cat">');
+                        });
+                    } else {
+                        $("#images-container").html("No images found");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                    console.log("Status:", status);
+                    console.log("Response:", xhr.responseText);
+                    $("#debug-info").html("AJAX Error: " + error + "<br>Status: " + status + "<br>Response: " + xhr.responseText);
+                }
+            });
+        });
+    </script>
 
 
 
