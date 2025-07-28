@@ -5,6 +5,10 @@
 
 
 <link rel="stylesheet" type="text/css" href="./media/catstyle.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
+    <style>
+        .resize { width: 200px; height: 200px; object-fit: cover; margin: 5px; }
+        .debug { background: #f0f0f0; padding: 10px; margin: 10px; border: 1px solid #ccc; }
+    </style>
 
 <?php
 //define('WEBSITE','https://aravindsundararajan.tech/media/images/')
@@ -77,15 +81,14 @@ these are my cats. I hope you like them. P.S. This page uses ajax to get a JSON 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mygmLSp5QIY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" class = "center" allowfullscreen></iframe>
 
 
-<div id="msg">
+<div class="debug">
+    <h3>Debug Info:</h3>
+    <div id="debug-info">Loading...</div>
 </div>
 
-<div id="msg2">
+<div id="images-container">
+    <h3>Images will appear here:</h3>
 </div>
-
-<br/>
-
-<div id='fileNames'></div>
 
 
 </body>
