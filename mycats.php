@@ -81,10 +81,10 @@ these are my cats. I hope you like them. P.S. This page uses ajax to get a JSON 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mygmLSp5QIY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" class = "center" allowfullscreen></iframe>
 
 
-<div class="debug">
+<!-- <div class="debug">
     <h3>Debug Info:</h3>
     <div id="debug-info">Loading...</div>
-</div>
+</div> -->
 
 <div id="images-container">
     <h3>Images will appear here:</h3>
