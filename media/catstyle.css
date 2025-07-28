@@ -1,7 +1,7 @@
 
 body {
     background-image: url("mycats.jpeg");
-	//background-color: lightblue;
+	/* background-color: lightblue; */
 	text-align: left;
 	font-size: 100%;
 	}
@@ -26,6 +26,15 @@ display:inline-block;
 width: 250px;
 height: 250px;
 overflow: hidden;
+}
+
+.resize {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 

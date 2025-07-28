@@ -22,12 +22,13 @@
 //echo $myJSON;
 ?>
 
-<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 
 <script type="text/javascript">
   
 $(document).ready(function(){
-//$("#msg").html("<h2>jQuery Hello World</h2>");
+    console.log("jQuery loaded successfully");
+    $("#msg").html("<h2>jQuery Hello World</h2>");
 });
   
 </script>
@@ -35,22 +36,21 @@ $(document).ready(function(){
 <script type="text/javascript">		
   
  $(window).load(function(){
- 	$("#msg2").html(function(){	
+ 	console.log("Window loaded, making AJAX request...");
+ 	$("#msg2").html("Loading images...");	
  		$.ajax({
 			type: "GET",
 			url: "./catpics.php",
 			dataType: "json",
-			success:function(result){
-			var output = "";
-			for (var i in result){
-				output += result[i];
-				$("#msg2").append("<img class='resize' src='" + result[i] + "'>");
-				//if (i+1 % 5 == 0)
-				//{
-				//	$("#msg2").append("<br>");
-				//}
-			}
-			//$("#msg2").append(output);
+			success: function(result) {
+				console.log("Received image files:", result);
+				for (var i = 0; i < result.length; i++) {
+					$("#msg2").append("<img class='resize' src='" + result[i] + "'>");
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("AJAX Error:", error);
+				console.log("Response:", xhr.responseText);
 			}
 		});
 
