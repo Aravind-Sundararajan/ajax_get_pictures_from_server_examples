@@ -28,29 +28,36 @@
   
 $(document).ready(function(){
     console.log("jQuery loaded successfully");
-    $("#msg").html("<h2>jQuery Hello World</h2>");
 });
   
 </script>
 
 <script type="text/javascript">		
   
- $(window).load(function(){
- 	console.log("Window loaded, making AJAX request...");
+ $(document).ready(function(){
+ 	console.log("jQuery loaded, making AJAX request...");
  	$("#msg2").html("Loading images...");	
  		$.ajax({
 			type: "GET",
-			url: "./catpics.php",
+			url: "./debug.php",
 			dataType: "json",
 			success: function(result) {
-				console.log("Received image files:", result);
-				for (var i = 0; i < result.length; i++) {
-					$("#msg2").append("<img class='resize' src='" + result[i] + "'>");
+				console.log("AJAX Success:", result);
+				$("#msg").html("Found " + result.valid_files + " images");
+				
+				if (result.files && result.files.length > 0) {
+					result.files.forEach(function(file) {
+						$("#msg2").append('<img class="resize" src="' + file + '" alt="Cat">');
+					});
+				} else {
+					$("#msg2").html("No images found");
 				}
 			},
 			error: function(xhr, status, error) {
 				console.error("AJAX Error:", error);
+				console.log("Status:", status);
 				console.log("Response:", xhr.responseText);
+				$("#msg2").html("AJAX Error: " + error + "<br>Status: " + status + "<br>Response: " + xhr.responseText);
 			}
 		});
 
