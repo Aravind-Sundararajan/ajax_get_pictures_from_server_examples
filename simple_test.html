@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Cat Pics Test</title>
+    <script src="../assets/js/jquery.min.js"></script>
+    <style>
+        .resize { width: 200px; height: 200px; object-fit: cover; margin: 5px; }
+        .debug { background: #f0f0f0; padding: 10px; margin: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Cat Pics AJAX Test</h1>
+    
+    <div class="debug">
+        <h3>Debug Info:</h3>
+        <div id="debug-info">Loading...</div>
+    </div>
+    
+    <div id="images-container">
+        <h3>Images will appear here:</h3>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            console.log("jQuery loaded");
+            $("#debug-info").html("jQuery loaded successfully");
+            
+            // Test the AJAX call
+            $.ajax({
+                type: "GET",
+                url: "./debug.php",
+                dataType: "json",
+                success: function(result) {
+                    console.log("AJAX Success:", result);
+                    $("#debug-info").html("AJAX Success! Found " + result.valid_files + " images");
+                    
+                    if (result.files && result.files.length > 0) {
+                        result.files.forEach(function(file) {
+                            $("#images-container").append('<img class="resize" src="' + file + '" alt="Cat">');
+                        });
+                    } else {
+                        $("#images-container").html("No images found");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                    console.log("Status:", status);
+                    console.log("Response:", xhr.responseText);
+                    $("#debug-info").html("AJAX Error: " + error + "<br>Status: " + status + "<br>Response: " + xhr.responseText);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
